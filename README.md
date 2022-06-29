@@ -1,4 +1,5 @@
-# opentrons-elisa
+# opentrons-elisa-scripts
+
 Code to run ELISA plate preps and assays using an Opentrons OT-2 Robot
 
 This code contains 3 independent scripts that in concert implement a complete medium-throughput ELISA pipeline, from plate prep (antigen binding), to assay. For clarity the complete protocol (USAGE) is outlined here, highlighting steps that need to be performed at the bench (not on the robot). 
@@ -11,13 +12,12 @@ At this first commit, there are many hardcoded logic in the scripts (see code an
 
 ## ELISA PIPELINE / PROTOCOL 
 
-### DAY 1 
+### DAY 1 - PLATE PREPS
 1. Prepare 24 antigens for binding (dilute at working concentration in binding buffer) and place them in the first three columns of a [NEST 96 Deepwell Plate 2mL](https://labware.opentrons.com/nest_96_wellplate_2ml_deep?category=wellPlate)
 2. Run elisa-plate-prep-ot2.py script on Opentrons OT-2
 3. Incubate at desired temperature in humidified chamber overnight
 
-
-### DAY 2
+### DAY 2 - ANTIBODY BINDING
 1. Prepare each primary antibody (dilute at working concentration in 5% non-fat dry milk (NFDM)), in a 1.5 mL or 2 mL eppendorf tube, and place each tube in an [Opentrons 24 Tube Rack](https://labware.opentrons.com/opentrons_24_tuberack_eppendorf_2ml_safelock_snapcap?category=tubeRack), see comments in next script for how to place tubes in the rack.
 2. Run elisa-plate-assay-primary-Ab-ot2.py on Opentrons OT-2
 3. Incubate for 1h at room temperature
@@ -28,7 +28,12 @@ At this first commit, there are many hardcoded logic in the scripts (see code an
 8. Wash Plates (at the bench) 5 times
 9. Read Plates
 
-This outline contains only a brief overview of the protocol, it is not exhaustively detailed ... see comments within scripts for more information.
+### NOTE ON WASHING OF PLATES
+Washing of plates is more effectively done outside of the OT-2 Robot, using a Manual Plate Washer similar to the one in [this video](https://www.youtube.com/watch?v=x1zQCsWrXbU). 
+
+### NOTES ON THE SCRIPTS 
+
+This README contains only a brief overview of the protocol, it is not exhaustively detailed ... see comments within scripts for more information.
 
 ## ALTERNATIVE USES OF THIS PROTOCOL
 This protocol can be easily adapted with little or no change to the scripts to the following situations: 
